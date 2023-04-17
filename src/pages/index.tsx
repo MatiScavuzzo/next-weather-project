@@ -1,15 +1,26 @@
-import { Inter } from 'next/font/google'
 import Head from 'next/head'
 import { Navbar } from '@/components/Navbar'
 import { WeatherCard } from '@/components/WeatherCard'
 import { ForecastCard } from '@/components/ForecastCard'
-import prueba from '@/services/accuweather'
+import { useState, useEffect } from 'react'
+import { currentConditions } from '@/services/accuweather'
 
-
-prueba('azul')
-const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const [selectedLocation, setSelectedLocation] = useState<string>('')
+  const [currentData, setCurrentData] = useState<any>({})
+
+  useEffect(() => {
+    const data =async () => {
+      const currentLocationData = await currentConditions(selectedLocation)
+      setCurrentData(currentLocationData)
+    }
+    data()
+  }, [selectedLocation])
+
+  const handleLocationSelect = (citiKey:string) => {
+    setSelectedLocation(citiKey)
+  }
   return (
     <>
       <Head>
@@ -18,12 +29,12 @@ export default function Home() {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <Navbar />
+      <Navbar onLocationSelect={handleLocationSelect} />
       <main className='p-2'>
         <h1 className='text-red-600'>Weather Project with Next</h1>
       </main>
       <section className='flex flex-col gap-2 p-2'>
-        <WeatherCard />
+        <WeatherCard currentDataInfo={currentData} />
         <ForecastCard />
       </section>
     </>
