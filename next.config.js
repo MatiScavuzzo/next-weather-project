@@ -9,7 +9,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'developer.accuweather.com'
+        hostname: 'cdn.weatherapi.com'
       }
     ]
   }
