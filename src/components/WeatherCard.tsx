@@ -13,17 +13,26 @@ export const WeatherCard = ({ currentDataInfo }: { currentDataInfo: any }) => {
           />
           <div className='flex flex-col'>
             <span className='text-sm'>
-              {currentDataInfo.current.temp_c}° C
+              {currentDataInfo.current.temp_c}° C - Temperatura actual ({currentDataInfo.current.last_updated})
             </span>
             <span className='text-sm'>
               {currentDataInfo.current.feelslike_c}° C - Sensación térmica
             </span>
             <span className='text-sm'>
-              
+              {currentDataInfo.current.humidity}% - Humedad
             </span>
-            <span className='text-sm'></span>
-            <span className='text-sm'></span>
-            {currentDataInfo.current.condition.text}
+            <span className='text-sm'>
+              {currentDataInfo.current.vis_km} km - Visibilidad
+            </span>
+            <span className='text-sm'>
+              {currentDataInfo.current.cloud}% - Nubosidad
+            </span>
+            <span className='text-sm'>
+              {currentDataInfo.current.uv} - Indice UV
+            </span>
+            <span className='text-sm'>
+              {currentDataInfo.current.condition.text}
+            </span>
           </div>
         </div>
       ) : null}
