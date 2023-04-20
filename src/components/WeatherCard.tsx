@@ -1,41 +1,22 @@
+import { WeatherContext } from '@/context/WeatherContext';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+import { useContext } from 'react';
 
-export const WeatherCard = ({ currentDataInfo }: { currentDataInfo: any }) => {
+const API_URL = process.env.API_URL
+const API_KEY = process.env.API_KEY
+
+export const WeatherCard = ({currentData}: any)  => {
+  const router = useRouter()
+  const { city } = router.query
   return (
-    <div className='flex w-full p-2 text-white border-2 rounded-lg border-slate-100'>
-      {currentDataInfo.current ? (
-        <div className='flex items-center justify-start'>
-          <Image
-            src={`https:${currentDataInfo.current.condition.icon}`}
-            alt={currentDataInfo.current.condition.text}
-            width={120}
-            height={120}
-          />
-          <div className='flex flex-col'>
-            <span className='text-sm'>
-              {currentDataInfo.current.temp_c}° C - Temperatura actual ({currentDataInfo.current.last_updated})
-            </span>
-            <span className='text-sm'>
-              {currentDataInfo.current.feelslike_c}° C - Sensación térmica
-            </span>
-            <span className='text-sm'>
-              {currentDataInfo.current.humidity}% - Humedad
-            </span>
-            <span className='text-sm'>
-              {currentDataInfo.current.vis_km} km - Visibilidad
-            </span>
-            <span className='text-sm'>
-              {currentDataInfo.current.cloud}% - Nubosidad
-            </span>
-            <span className='text-sm'>
-              {currentDataInfo.current.uv} - Indice UV
-            </span>
-            <span className='text-sm'>
-              {currentDataInfo.current.condition.text}
-            </span>
-          </div>
-        </div>
-      ) : null}
-    </div>
+    <div className='text-white'>Hola</div>
   );
 };
+
+export async function getStaticProps(arg:any) {
+  console.log(arg)
+  const request = await fetch(`${API_URL}current.json?key=${API_KEY}&q=azul&lang=es&aqi=yes&alerts=yes`)
+  const currentData = await request.json()
+  return {props: currentData}
+}
