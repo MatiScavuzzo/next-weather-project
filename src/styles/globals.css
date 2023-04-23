@@ -21,3 +21,8 @@
 }
 @tailwind components;
 @tailwind utilities;
+
+.day {
+  background-image: url(../../public/sunny_day.jpeg);
+  object-fit: cover;
+}

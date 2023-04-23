@@ -1,7 +1,5 @@
 import Head from 'next/head'
 import { Navbar } from '@/components/Navbar'
-import {WeatherCard} from '@/components/WeatherCard'
-import { ForecastCard } from '@/components/ForecastCard'
 
 export default function Home() {
   return (
@@ -16,10 +14,6 @@ export default function Home() {
       <main className='p-2'>
         <h1 className='text-red-600'>Weather Project with Next</h1>
       </main>
-      <section className='flex flex-col gap-2 p-2'>
-        <WeatherCard />
-        <ForecastCard />
-      </section>
     </>
   )
 }

@@ -5,7 +5,6 @@ export const WeatherContext = createContext({});
 
 export const WeatherContextProvider = ({ children }: any) => {
   const [selectedLocation, setSelectedLocation] = useState<string>('')
-  const [currentData, setCurrentData] = useState<any>({})
   const [response, setResponse] = useState([])
   const [hidden, setHidden] = useState(false)
   
@@ -22,22 +21,12 @@ export const WeatherContextProvider = ({ children }: any) => {
     setHidden(false)
   }
 
-  useEffect(() => {
-    const data =async () => {
-      const currentLocationData = await currentConditions(selectedLocation)
-      setCurrentData(currentLocationData)
-    }
-    data()
-  }, [selectedLocation])
-
   const handleLocationSelect = (citiKey:string) => {
     setSelectedLocation(citiKey)
     setHidden(true)
-  
   }
   return (
     <WeatherContext.Provider value={{
-      currentData,
       response,
       hidden,
       selectedLocation,
