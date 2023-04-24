@@ -24,5 +24,14 @@
 
 .day {
   background-image: url(../../public/sunny_day.jpeg);
-  object-fit: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
+.cloudyDay {
+  background-image: url(../../public/cloudy_day.jpeg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
