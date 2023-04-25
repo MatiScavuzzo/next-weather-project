@@ -1,4 +1,5 @@
 export type ForecastHourProps = {
+  time_epoch: number;
   temp_c: number;
   is_day: number;
   condition: {

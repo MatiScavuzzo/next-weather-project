@@ -1,4 +1,4 @@
-import { ForecastHourCard } from '@/components/ForecastHourCard';
+import { ForecastContainer } from '@/components/ForecastContainer';
 import { WeatherCard } from '@/components/WeatherCard';
 
 const API_URL = process.env.API_URL;
@@ -8,7 +8,7 @@ const City = ({ currentData, forecastData }: any) => {
   return (
     <div className='flex flex-col items-center justify-center h-screen gap-4 p-2'>
       <WeatherCard currentDataInfo={currentData} />
-      <ForecastHourCard forecastDataInfo={forecastData} />
+      <ForecastContainer forecastData={forecastData} />
     </div>
   );
 };
