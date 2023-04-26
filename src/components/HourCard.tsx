@@ -7,7 +7,7 @@ export const HourCard = ({forecastDataInfo, arrPosition}: {forecastDataInfo: For
       {forecastDataInfo.forecast.forecastday[arrPosition].hour.map((hour: ForecastHourProps) => 
         hour.time_epoch >= forecastDataInfo.current.last_updated_epoch ? 
         <div id="hourCard" key={hour.time} className={`${hour.is_day === 0 ? `${hour.cloud > 30 ? 'cloudyNight' : 'night'} text-white` : `${hour.cloud > 30 ? 'cloudyDay' : 'day'} text-black`} flex flex-col items-center justify-center flex-shrink-0 w-full gap-1 text-xs border border-opacity-50 rounded-lg sm:text-sm sm:w-1/3 border-slate-400`}>
-          <div className={`${hour.is_day === 0 ? 'bg-slate-800' : 'bg-slate-200'} bg-opacity-50 flex flex-col items-center justify-around w-full gap-1 rounded-lg`}>
+          <div className={`${hour.is_day === 0 ? 'bg-slate-800' : 'bg-slate-200'} bg-opacity-30 flex flex-col items-center justify-around w-full gap-1 rounded-lg`}>
             <div className='flex items-center justify-around gap-2'>
               <span>{hour.time.split(" ")[1].slice(0, 5)}</span>
               <Image src={`https:${hour.condition.icon}`} alt="weather icon" width={40} height={40} />
