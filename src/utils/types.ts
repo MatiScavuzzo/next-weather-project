@@ -78,6 +78,16 @@ export type ForecastDayProps = {
   }
 };
 
+export type LocationProps = {
+  id: number;
+  name: string;
+  region: string;
+  country: string;
+  lat: number;
+  lon: number;
+  url: string;
+}
+
 export type ForecastProps = {
   location: {
     name: string;

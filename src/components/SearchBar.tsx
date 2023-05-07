@@ -1,4 +1,5 @@
 import { WeatherContext } from '@/context/WeatherContext';
+import { LocationProps } from '@/utils/types';
 import Link from 'next/link';
 import { useContext } from 'react';
 import { FiSearch } from 'react-icons/fi';
@@ -28,7 +29,7 @@ export const SearchBar = () => {
             hidden ? 'hidden' : ''
           } absolute left-0 w-full bg-white shadow-md top-full rounded-xl`}
         >
-          {response.map((city: any) => (
+          {response.map((city: LocationProps) => (
             <Link href={`/${city.name}`} key={city.id}>
               <li
                 onClick={() => handleLocationSelect(city.name)}

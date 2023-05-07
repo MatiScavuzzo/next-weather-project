@@ -34,6 +34,12 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+.cloudy {
+  background-image: url(../../public/cloudy.jpeg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .night {
   background-image: url(../../public/clear_night.jpeg);
   background-position: center;

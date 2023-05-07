@@ -1,7 +1,24 @@
+import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import { Navbar } from '@/components/Navbar'
+import { WeatherCard } from '@/components/WeatherCard';
+
+const API_URL = process.env.API_URL;
+const API_KEY = process.env.API_KEY;
 
 export default function Home() {
+  const [weatherData, setWeatherData] = useState(null)
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      const {latitude, longitude} = position.coords
+
+      fetch(`${API_URL}current.json?key=${API_KEY}&q=${latitude},${longitude}&lang=es&aqi=no`)
+      .then(res => res.json())
+      .then(data => setWeatherData(data))
+      .catch(err => console.log(err))
+    },
+    )
+  }, [])
   return (
     <>
       <Head>
@@ -13,6 +30,7 @@ export default function Home() {
       <Navbar />
       <main className='p-2'>
         <h1 className='text-red-600'>Weather Project with Next</h1>
+        {weatherData && <WeatherCard currentDataInfo={weatherData} />}
       </main>
     </>
   )
